@@ -28,12 +28,12 @@ export default async function AdminBikesPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white">Bikes</h1>
-          <p className="text-gray-400 mt-1">{bikes.length} bikes total</p>
+          <h1 className="text-3xl font-bold text-text-primary">Bikes</h1>
+          <p className="text-text-secondary mt-1">{bikes.length} bikes total</p>
         </div>
         <Link
           href="/admin/bikes/new"
-          className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
+          className="btn btn-primary btn-md"
         >
           + Add Bike
         </Link>
@@ -41,26 +41,26 @@ export default async function AdminBikesPage() {
 
       {/* Bikes Table */}
       {bikes.length > 0 ? (
-        <div className="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
+        <div className="card overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-gray-800">
-                <th className="text-left text-gray-400 text-sm font-medium px-6 py-4">
+              <tr className="border-b border-(--color-border-light)">
+                <th className="text-left text-text-secondary text-sm font-medium px-6 py-4">
                   Bike
                 </th>
-                <th className="text-left text-gray-400 text-sm font-medium px-6 py-4 hidden md:table-cell">
+                <th className="text-left text-text-secondary text-sm font-medium px-6 py-4 hidden md:table-cell">
                   Brand
                 </th>
-                <th className="text-left text-gray-400 text-sm font-medium px-6 py-4 hidden md:table-cell">
+                <th className="text-left text-text-secondary text-sm font-medium px-6 py-4 hidden md:table-cell">
                   Price
                 </th>
-                <th className="text-left text-gray-400 text-sm font-medium px-6 py-4 hidden lg:table-cell">
+                <th className="text-left text-text-secondary text-sm font-medium px-6 py-4 hidden lg:table-cell">
                   Category
                 </th>
-                <th className="text-left text-gray-400 text-sm font-medium px-6 py-4 hidden lg:table-cell">
+                <th className="text-left text-text-secondary text-sm font-medium px-6 py-4 hidden lg:table-cell">
                   Featured
                 </th>
-                <th className="text-right text-gray-400 text-sm font-medium px-6 py-4">
+                <th className="text-right text-text-secondary text-sm font-medium px-6 py-4">
                   Actions
                 </th>
               </tr>
@@ -69,33 +69,27 @@ export default async function AdminBikesPage() {
               {bikes.map((bike) => (
                 <tr
                   key={bike._id}
-                  className="border-b border-gray-800 last:border-0 hover:bg-gray-800/50 transition-colors"
+                  className="border-b border-(--color-border-light) last:border-0 hover:bg-(--color-bg-hover) transition-colors"
                 >
                   <td className="px-6 py-4">
-                    <p className="text-white font-medium text-sm">{bike.name}</p>
-                    <p className="text-gray-500 text-xs">{bike.slug}</p>
+                    <p className="text-text-primary font-medium text-sm">{bike.name}</p>
+                    <p className="text-text-tertiary text-xs">{bike.slug}</p>
                   </td>
                   <td className="px-6 py-4 hidden md:table-cell">
-                    <span className="text-gray-300 text-sm">{bike.brand}</span>
+                    <span className="text-text-secondary text-sm">{bike.brand}</span>
                   </td>
                   <td className="px-6 py-4 hidden md:table-cell">
-                    <span className="text-orange-400 text-sm font-medium">
+                    <span className="text-accent-primary text-sm font-medium">
                       {formatNPR(bike.price)}
                     </span>
                   </td>
                   <td className="px-6 py-4 hidden lg:table-cell">
-                    <span className="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded-full capitalize">
+                    <span className="badge badge-secondary capitalize">
                       {bike.category}
                     </span>
                   </td>
                   <td className="px-6 py-4 hidden lg:table-cell">
-                    <span
-                      className={`text-xs px-2 py-1 rounded-full ${
-                        bike.isFeatured
-                          ? "bg-orange-500/10 text-orange-400"
-                          : "bg-gray-800 text-gray-500"
-                      }`}
-                    >
+                    <span className={`badge ${bike.isFeatured ? 'badge-primary' : 'badge-secondary'}`}>
                       {bike.isFeatured ? "Yes" : "No"}
                     </span>
                   </td>
@@ -103,7 +97,7 @@ export default async function AdminBikesPage() {
                     <div className="flex items-center justify-end gap-2">
                       <Link
                         href={`/admin/bikes/${bike._id}`}
-                        className="bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs px-3 py-1.5 rounded-lg transition-colors"
+                        className="btn btn-secondary btn-sm"
                       >
                         Edit
                       </Link>
@@ -116,14 +110,14 @@ export default async function AdminBikesPage() {
           </table>
         </div>
       ) : (
-        <div className="text-center py-24 text-gray-500">
+        <div className="text-center py-24 text-text-muted">
           <p className="text-6xl mb-4">🏍️</p>
-          <p className="text-xl font-semibold text-gray-400 mb-2">
+          <p className="text-xl font-semibold text-text-secondary mb-2">
             No bikes yet
           </p>
           <Link
             href="/admin/bikes/new"
-            className="text-orange-400 hover:text-orange-300 text-sm"
+            className="link"
           >
             Add your first bike →
           </Link>

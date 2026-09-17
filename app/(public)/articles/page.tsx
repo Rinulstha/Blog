@@ -34,21 +34,22 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="page-shell">
 
       {/* Header */}
-      <div className="mb-10">
-        <h1 className="text-4xl font-extrabold text-white mb-2">
+      <div className="mb-12 max-w-2xl">
+        <p className="eyebrow mb-3">Stories & advice</p>
+        <h1 className="page-heading mb-3">
           Articles & Guides
         </h1>
-        <p className="text-gray-400">
+        <p className="text-text-secondary">
           Reviews, comparisons and tips for bike riders in Nepal
         </p>
       </div>
 
       {/* Category Filter */}
-      <div className="mb-10">
-        <p className="text-gray-400 text-sm mb-3">Filter by Category</p>
+      <div className="mb-12 rounded-2xl border border-(--color-border-light) bg-(--color-bg-secondary) p-5 shadow-sm sm:p-6">
+        <p className="text-text-secondary text-sm font-semibold mb-3">Explore a topic</p>
         <div className="flex flex-wrap gap-2">
           {categories.map((cat) => {
             const isActive =
@@ -57,10 +58,10 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
               <Link
                 key={cat}
                 href={`/articles?category=${cat}`}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
+                className={`filter-pill capitalize ${
                   isActive
-                    ? "bg-orange-500 text-white"
-                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                    ? "filter-pill-active"
+                    : ""
                 }`}
               >
                 {cat}
@@ -81,9 +82,9 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
           ))}
         </div>
       ) : (
-        <div className="text-center py-24 text-gray-500">
+        <div className="text-center py-24 text-text-muted">
           <p className="text-6xl mb-4">📰</p>
-          <p className="text-xl font-semibold text-gray-400 mb-2">
+          <p className="text-xl font-semibold text-text-tertiary mb-2">
             No articles found
           </p>
           <p className="text-sm">Try changing the filter or check back later</p>

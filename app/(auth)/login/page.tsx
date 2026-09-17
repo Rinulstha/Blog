@@ -31,21 +31,22 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-950 flex items-center justify-center px-4">
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 w-full max-w-md">
+    <div className="relative min-h-screen overflow-hidden bg-(--color-bg-primary) flex items-center justify-center px-4">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-accent-primary/15 via-transparent to-transparent" />
+      <div className="card relative w-full max-w-md p-8 sm:p-10">
 
         {/* Logo */}
         <div className="text-center mb-8">
-          <span className="text-4xl">🏍️</span>
-          <h1 className="text-2xl font-bold text-white mt-2">
-            Nepal<span className="text-orange-500">Bikes</span>
+          <span className="mx-auto grid size-14 place-items-center rounded-2xl bg-(--color-accent-primary-light) text-3xl">🏍️</span>
+          <h1 className="text-2xl font-extrabold tracking-tight text-text-primary mt-4">
+            Nepal<span className="text-accent-primary">Bikes</span>
           </h1>
-          <p className="text-gray-400 text-sm mt-1">Admin Panel</p>
+          <p className="text-text-tertiary text-sm mt-1">Admin workspace</p>
         </div>
 
         {/* Error */}
         {error && (
-          <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-sm px-4 py-3 rounded-xl mb-6">
+          <div className="bg-(--color-error-light) border border-(--color-error-light) text-(--color-error) text-sm px-4 py-3 rounded-xl mb-6">
             {error}
           </div>
         )}
@@ -53,7 +54,7 @@ export default function AdminLoginPage() {
         {/* Form */}
         <div className="space-y-4">
           <div>
-            <label className="text-gray-400 text-sm mb-1.5 block">
+            <label className="label">
               Email
             </label>
             <input
@@ -61,12 +62,12 @@ export default function AdminLoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="admin@nepalbikes.com"
-              className="w-full bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+              className="input h-12"
             />
           </div>
 
           <div>
-            <label className="text-gray-400 text-sm mb-1.5 block">
+            <label className="label">
               Password
             </label>
             <input
@@ -75,14 +76,14 @@ export default function AdminLoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-              className="w-full bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+              className="input h-12"
             />
           </div>
 
           <button
             onClick={handleLogin}
             disabled={loading}
-            className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-xl transition-colors mt-2"
+            className="btn btn-primary btn-lg w-full mt-2"
           >
             {loading ? "Logging in..." : "Login"}
           </button>

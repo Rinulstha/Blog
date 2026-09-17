@@ -40,26 +40,26 @@ export default async function BikeDetailPage({ params }: BikeDetailPageProps) {
   ].filter((s) => s.value);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="page-shell">
 
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-gray-400 mb-8">
-        <Link href="/" className="hover:text-orange-400 transition-colors">
+      <div className="flex items-center gap-2 text-sm text-text-tertiary mb-10 overflow-hidden whitespace-nowrap">
+        <Link href="/" className="hover:text-accent-primary transition-colors">
           Home
         </Link>
         <span>/</span>
-        <Link href="/bikes" className="hover:text-orange-400 transition-colors">
+        <Link href="/bikes" className="hover:text-accent-primary transition-colors">
           Bikes
         </Link>
         <span>/</span>
-        <span className="text-white">{bike.name}</span>
+        <span className="truncate text-text-primary">{bike.name}</span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
 
         {/* Left — Images */}
         <div>
-          <div className="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 h-80 md:h-96">
+          <div className="bg-(--color-bg-secondary) rounded-3xl overflow-hidden border border-(--color-border-light) shadow-sm h-80 md:h-96">
             {bike.images?.[0] ? (
               <img
                 src={bike.images[0]}
@@ -79,7 +79,7 @@ export default async function BikeDetailPage({ params }: BikeDetailPageProps) {
               {bike.images.slice(1).map((img, i) => (
                 <div
                   key={i}
-                  className="w-20 h-16 bg-gray-900 rounded-lg overflow-hidden border border-gray-800"
+                  className="w-20 h-16 bg-(--color-bg-secondary) rounded-xl overflow-hidden border border-(--color-border-light)"
                 >
                   <img
                     src={img}
@@ -96,34 +96,34 @@ export default async function BikeDetailPage({ params }: BikeDetailPageProps) {
         <div>
           {/* Brand & Category */}
           <div className="flex items-center gap-3 mb-3">
-            <span className="text-gray-400 text-sm">{bike.brand}</span>
-            <span className="bg-orange-500/10 text-orange-400 text-xs px-2 py-1 rounded-full capitalize border border-orange-500/20">
+            <span className="eyebrow">{bike.brand}</span>
+            <span className="badge badge-primary capitalize">
               {bike.category}
             </span>
           </div>
 
           {/* Name */}
-          <h1 className="text-4xl font-extrabold text-white mb-4">
+          <h1 className="page-heading mb-5">
             {bike.name}
           </h1>
 
           {/* Price */}
-          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5 mb-6">
-            <p className="text-gray-400 text-sm mb-1">Price in Nepal</p>
-            <p className="text-3xl font-extrabold text-orange-400">
+          <div className="bg-(--color-bg-secondary) border border-(--color-border-light) rounded-2xl p-6 mb-8 shadow-sm">
+            <p className="text-text-tertiary text-sm font-medium mb-1">Price in Nepal</p>
+            <p className="text-3xl font-extrabold tracking-tight text-accent-primary">
               {formatNPR(bike.price)}
             </p>
-            <p className="text-gray-500 text-xs mt-1">
+            <p className="text-text-muted text-xs mt-1">
               * Ex-showroom price. May vary by dealer.
             </p>
           </div>
 
           {/* Description */}
           <div className="mb-6">
-            <h2 className="text-white font-semibold text-lg mb-2">
+            <h2 className="text-text-primary font-bold text-lg mb-2">
               About this Bike
             </h2>
-            <p className="text-gray-400 leading-relaxed">{bike.description}</p>
+            <p className="text-text-secondary leading-relaxed">{bike.description}</p>
           </div>
         </div>
       </div>
@@ -131,21 +131,24 @@ export default async function BikeDetailPage({ params }: BikeDetailPageProps) {
       {/* Full Specs Table */}
       {specsList.length > 0 && (
         <div className="mt-14">
-          <h2 className="text-2xl font-bold text-white mb-6">
+          <div className="mb-6">
+            <p className="eyebrow mb-2">Every detail</p>
+            <h2 className="text-2xl font-bold tracking-tight text-text-primary">
             Full Specifications
-          </h2>
-          <div className="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">
+            </h2>
+          </div>
+          <div className="bg-(--color-bg-secondary) border border-(--color-border-light) rounded-2xl overflow-hidden shadow-sm">
             {specsList.map((spec, index) => (
               <div
                 key={spec.label}
                 className={`flex items-center justify-between px-6 py-4 ${
                   index !== specsList.length - 1
-                    ? "border-b border-gray-800"
+                    ? "border-b border-(--color-border-light)"
                     : ""
                 }`}
               >
-                <span className="text-gray-400 text-sm">{spec.label}</span>
-                <span className="text-white font-medium text-sm">
+                <span className="text-text-tertiary text-sm">{spec.label}</span>
+                <span className="text-text-primary font-semibold text-sm text-right">
                   {spec.value}
                 </span>
               </div>
@@ -158,7 +161,7 @@ export default async function BikeDetailPage({ params }: BikeDetailPageProps) {
       <div className="mt-10">
         <Link
           href="/bikes"
-          className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-400 transition-colors text-sm"
+          className="inline-flex items-center gap-2 text-text-secondary hover:text-accent-primary transition-colors text-sm font-semibold"
         >
           ← Back to all bikes
         </Link>

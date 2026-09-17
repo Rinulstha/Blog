@@ -16,7 +16,7 @@ export default async function EditBikePage({ params }: EditBikePageProps) {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-white mb-8">Edit Bike</h1>
+      <h1 className="text-3xl font-bold text-text-primary mb-8">Edit Bike</h1>
       <BikeForm bike={JSON.parse(JSON.stringify(bike))} isEditing />
     </div>
   );

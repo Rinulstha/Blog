@@ -38,24 +38,25 @@ export default async function BikesPage({ searchParams }: BikesPageProps) {
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="page-shell">
 
       {/* Header */}
-      <div className="mb-10">
-        <h1 className="text-4xl font-extrabold text-white mb-2">
+      <div className="mb-12 max-w-2xl">
+        <p className="eyebrow mb-3">Discover your next ride</p>
+        <h1 className="page-heading mb-3">
           All Bikes in Nepal
         </h1>
-        <p className="text-gray-400">
+        <p className="text-(--color-text-secondary)">
           Browse {bikes.length} bikes with full specs and prices
         </p>
       </div>
 
       {/* Filters */}
-      <div className="mb-10 space-y-4">
+      <div className="mb-12 rounded-2xl border border-(--color-border-light) bg-(--color-bg-secondary) p-5 shadow-sm sm:p-6 space-y-5">
 
         {/* Category Filter */}
         <div>
-          <p className="text-gray-400 text-sm mb-3">Filter by Category</p>
+          <p className="text-(--color-text-secondary) text-sm font-semibold mb-3">Browse by category</p>
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => {
               const isActive =
@@ -67,10 +68,10 @@ export default async function BikesPage({ searchParams }: BikesPageProps) {
                     ...(brand && brand !== "all" ? { brand } : {}),
                     category: cat,
                   }).toString()}`}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
+                  className={`filter-pill capitalize ${
                     isActive
-                      ? "bg-orange-500 text-white"
-                      : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                      ? "filter-pill-active"
+                      : ""
                   }`}
                 >
                   {cat}
@@ -82,7 +83,7 @@ export default async function BikesPage({ searchParams }: BikesPageProps) {
 
         {/* Brand Filter */}
         <div>
-          <p className="text-gray-400 text-sm mb-3">Filter by Brand</p>
+          <p className="text-(--color-text-secondary) text-sm font-semibold mb-3">Browse by brand</p>
           <div className="flex flex-wrap gap-2">
             {brands.map((b) => {
               const isActive =
@@ -94,10 +95,10 @@ export default async function BikesPage({ searchParams }: BikesPageProps) {
                     brand: b,
                     ...(category && category !== "all" ? { category } : {}),
                   }).toString()}`}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                  className={`filter-pill ${
                     isActive
-                      ? "bg-orange-500 text-white"
-                      : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                      ? "filter-pill-active"
+                      : ""
                   }`}
                 >
                   {b}
@@ -116,9 +117,9 @@ export default async function BikesPage({ searchParams }: BikesPageProps) {
           ))}
         </div>
       ) : (
-        <div className="text-center py-24 text-gray-500">
+        <div className="text-center py-24 text-(--color-text-muted)">
           <p className="text-6xl mb-4">🏍️</p>
-          <p className="text-xl font-semibold text-gray-400 mb-2">
+          <p className="text-xl font-semibold text-(--color-text-tertiary) mb-2">
             No bikes found
           </p>
           <p className="text-sm">Try changing the filters above</p>

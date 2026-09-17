@@ -18,7 +18,7 @@ export default async function EditArticlePage({
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-white mb-8">Edit Article</h1>
+      <h1 className="text-3xl font-bold text-text-primary mb-8">Edit Article</h1>
       <ArticleForm article={JSON.parse(JSON.stringify(article))} isEditing />
     </div>
   );

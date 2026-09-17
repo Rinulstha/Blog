@@ -9,10 +9,10 @@ interface BikeCardProps {
 export default function BikeCard({ bike }: BikeCardProps) {
   return (
     <Link href={`/bikes/${bike.slug}`}>
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300 group">
+      <div className="card group h-full overflow-hidden">
 
         {/* Bike Image */}
-        <div className="relative h-48 bg-gray-800 overflow-hidden">
+        <div className="relative h-52 bg-(--color-bg-tertiary) overflow-hidden">
           {bike.images?.[0] ? (
             <img
               src={bike.images[0]}
@@ -26,20 +26,20 @@ export default function BikeCard({ bike }: BikeCardProps) {
           )}
 
           {/* Category Badge */}
-          <span className="absolute top-3 left-3 bg-orange-500 text-white text-xs font-semibold px-2 py-1 rounded-full capitalize">
+          <span className="absolute top-3 left-3 badge badge-primary capitalize">
             {bike.category}
           </span>
         </div>
 
         {/* Bike Info */}
-        <div className="p-4">
-          <p className="text-gray-400 text-xs mb-1">{bike.brand}</p>
-          <h3 className="text-white font-bold text-lg mb-2 group-hover:text-orange-400 transition-colors">
+        <div className="flex min-h-52 flex-col p-5">
+          <p className="text-text-tertiary text-xs font-bold uppercase tracking-[0.12em] mb-2">{bike.brand}</p>
+          <h3 className="text-text-primary font-bold text-lg leading-snug mb-3 group-hover:text-accent-primary transition-colors">
             {bike.name}
           </h3>
 
           {/* Specs Row */}
-          <div className="flex gap-3 text-xs text-gray-400 mb-3">
+          <div className="flex gap-3 text-xs text-text-tertiary mb-3">
             {bike.specs?.engine && (
               <span>⚙️ {bike.specs.engine.split(",")[0]}</span>
             )}
@@ -47,12 +47,12 @@ export default function BikeCard({ bike }: BikeCardProps) {
           </div>
 
           {/* Price */}
-          <div className="flex items-center justify-between">
-            <span className="text-orange-400 font-bold text-lg">
+          <div className="mt-auto flex items-center justify-between border-t border-(--color-border-light) pt-4">
+            <span className="text-accent-primary font-bold text-lg">
               {formatNPR(bike.price)}
             </span>
-            <span className="text-gray-400 text-xs border border-gray-700 px-2 py-1 rounded-full">
-              View Details →
+            <span className="text-text-secondary text-xs font-semibold">
+              Details <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
             </span>
           </div>
         </div>

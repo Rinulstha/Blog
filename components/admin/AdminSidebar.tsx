@@ -14,17 +14,17 @@ export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-gray-900 border-r border-gray-800 min-h-screen flex flex-col">
+    <aside className="w-64 bg-(--color-bg-secondary) border-r border-(--color-border-light) min-h-screen flex flex-col">
 
       {/* Logo */}
-      <div className="p-6 border-b border-gray-800">
+      <div className="p-6 border-b border-(--color-border-light)">
         <div className="flex items-center gap-2">
           <span className="text-xl">🏍️</span>
-          <span className="font-bold text-white">
-            Nepal<span className="text-orange-500">Bikes</span>
+          <span className="font-bold text-text-primary">
+            Nepal<span className="text-accent-primary">Bikes</span>
           </span>
         </div>
-        <p className="text-gray-500 text-xs mt-1">Admin Panel</p>
+        <p className="text-text-muted text-xs mt-1">Admin Panel</p>
       </div>
 
       {/* Nav Links */}
@@ -41,8 +41,8 @@ export default function AdminSidebar() {
               href={link.href}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                 isActive
-                  ? "bg-orange-500/10 text-orange-400 border border-orange-500/20"
-                  : "text-gray-400 hover:bg-gray-800 hover:text-white"
+                  ? "bg-(--color-accent-primary-light) text-accent-primary border border-(--color-accent-primary-light)"
+                  : "text-text-secondary hover:bg-(--color-bg-tertiary) hover:text-text-primary"
               }`}
             >
               <span>{link.icon}</span>
@@ -53,17 +53,17 @@ export default function AdminSidebar() {
       </nav>
 
       {/* Bottom — View Site + Logout */}
-      <div className="p-4 border-t border-gray-800 space-y-2">
+      <div className="p-4 border-t border-(--color-border-light) space-y-2">
         <Link
           href="/"
           target="_blank"
-          className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-gray-400 hover:bg-gray-800 hover:text-white transition-colors"
+          className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-text-secondary hover:bg-(--color-bg-tertiary) hover:text-text-primary transition-colors"
         >
           <span>🌐</span> View Site
         </Link>
         <button
           onClick={() => signOut({ callbackUrl: "/admin/login" })}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-gray-400 hover:bg-red-500/10 hover:text-red-400 transition-colors"
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-text-secondary hover:bg-(--color-error-light) hover:text-error transition-colors"
         >
           <span>🚪</span> Logout
         </button>

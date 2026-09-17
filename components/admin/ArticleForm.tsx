@@ -91,21 +91,21 @@ function handleChange(
   }
 
   const inputClass =
-    "w-full bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors";
+    "w-full bg-(--color-bg-secondary) border border-(--color-border-medium) text-(--color-text-primary) rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-(--color-accent-primary) focus:ring-2 focus:ring-(--color-accent-primary-light) transition-colors";
 
-  const labelClass = "text-gray-400 text-sm mb-1.5 block";
+  const labelClass = "text-(--color-text-secondary) text-sm mb-1.5 block";
 
   return (
     <div className="max-w-3xl space-y-8">
       {error && (
-        <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-sm px-4 py-3 rounded-xl">
+        <div className="bg-(--color-error-light) border border-(--color-error-light) text-(--color-error) text-sm px-4 py-3 rounded-xl">
           {error}
         </div>
       )}
 
       {/* Basic Info */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 space-y-4">
-        <h2 className="text-white font-semibold text-lg">Article Info</h2>
+      <div className="card p-6 space-y-4">
+        <h2 className="text-(--color-text-primary) font-semibold text-lg">Article Info</h2>
 
         <div>
           <label className={labelClass}>Title *</label>
@@ -188,9 +188,9 @@ function handleChange(
               name="isPublished"
               checked={form.isPublished}
               onChange={handleChange}
-              className="accent-orange-500 w-4 h-4"
+              className="accent-(--color-accent-primary) w-4 h-4"
             />
-            <span className="text-gray-300 text-sm">Published</span>
+            <span className="text-(--color-text-secondary) text-sm">Published</span>
           </label>
           <label className="flex items-center gap-2 cursor-pointer">
             <input
@@ -198,16 +198,16 @@ function handleChange(
               name="isFeatured"
               checked={form.isFeatured}
               onChange={handleChange}
-              className="accent-orange-500 w-4 h-4"
+              className="accent-(--color-accent-primary) w-4 h-4"
             />
-            <span className="text-gray-300 text-sm">Featured on Homepage</span>
+            <span className="text-(--color-text-secondary) text-sm">Featured on Homepage</span>
           </label>
         </div>
       </div>
 
       {/* Content */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 space-y-4">
-        <h2 className="text-white font-semibold text-lg">Content *</h2>
+      <div className="card p-6 space-y-4">
+        <h2 className="text-(--color-text-primary) font-semibold text-lg">Content *</h2>
         <textarea
           name="content"
           value={form.content}
@@ -223,7 +223,7 @@ function handleChange(
         <button
           onClick={handleSubmit}
           disabled={loading}
-          className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
+          className="btn btn-primary btn-lg"
         >
           {loading
             ? "Saving..."
@@ -233,7 +233,7 @@ function handleChange(
         </button>
         <button
           onClick={() => router.back()}
-          className="bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold px-8 py-3 rounded-xl transition-colors"
+          className="btn btn-secondary btn-lg"
         >
           Cancel
         </button>

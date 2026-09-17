@@ -30,22 +30,22 @@ export default async function ArticleDetailPage({
   if (!article) return notFound();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="page-shell">
 
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-gray-400 mb-8">
-        <Link href="/" className="hover:text-orange-400 transition-colors">
+      <div className="flex items-center gap-2 text-sm text-text-tertiary mb-10 overflow-hidden whitespace-nowrap">
+        <Link href="/" className="hover:text-accent-primary transition-colors">
           Home
         </Link>
         <span>/</span>
         <Link
           href="/articles"
-          className="hover:text-orange-400 transition-colors"
+          className="hover:text-accent-primary transition-colors"
         >
           Articles
         </Link>
         <span>/</span>
-        <span className="text-white line-clamp-1">{article.title}</span>
+        <span className="truncate text-text-primary">{article.title}</span>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -55,10 +55,10 @@ export default async function ArticleDetailPage({
 
           {/* Category & Date */}
           <div className="flex items-center gap-3 mb-4">
-            <span className="bg-orange-500/10 text-orange-400 text-xs font-semibold px-3 py-1 rounded-full border border-orange-500/20 capitalize">
+            <span className="badge badge-primary capitalize">
               {article.category}
             </span>
-            <span className="text-gray-500 text-sm">
+            <span className="text-text-tertiary text-sm">
               {new Date(article.createdAt).toLocaleDateString("en-NP", {
                 year: "numeric",
                 month: "long",
@@ -68,13 +68,13 @@ export default async function ArticleDetailPage({
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-6 leading-tight">
+          <h1 className="page-heading mb-7">
             {article.title}
           </h1>
 
           {/* Cover Image */}
           {article.coverImage && (
-            <div className="rounded-2xl overflow-hidden border border-gray-800 mb-8 h-72 md:h-96">
+            <div className="rounded-3xl overflow-hidden border border-(--color-border-light) bg-(--color-bg-secondary) shadow-sm mb-8 h-72 md:h-96">
               <img
                 src={article.coverImage}
                 alt={article.title}
@@ -84,9 +84,9 @@ export default async function ArticleDetailPage({
           )}
 
           {/* Article Content */}
-          <div className="prose prose-invert prose-orange max-w-none">
+          <div className="max-w-none">
             <div
-              className="text-gray-300 leading-relaxed space-y-4 whitespace-pre-line"
+              className="text-text-secondary text-[1.05rem] leading-8 whitespace-pre-line"
             >
               {article.content}
             </div>
@@ -94,13 +94,13 @@ export default async function ArticleDetailPage({
 
           {/* Tags */}
           {article.tags?.length > 0 && (
-            <div className="mt-10 pt-6 border-t border-gray-800">
-              <p className="text-gray-400 text-sm mb-3">Tags</p>
+            <div className="mt-10 pt-6 border-t border-(--color-border-light)">
+              <p className="text-text-tertiary text-sm font-semibold mb-3">Tags</p>
               <div className="flex flex-wrap gap-2">
                 {article.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-gray-800 text-gray-300 text-xs px-3 py-1 rounded-full"
+                    className="bg-(--color-bg-tertiary) text-text-secondary text-xs font-semibold px-3 py-1.5 rounded-full"
                   >
                     #{tag}
                   </span>
@@ -113,7 +113,7 @@ export default async function ArticleDetailPage({
           <div className="mt-10">
             <Link
               href="/articles"
-              className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-400 transition-colors text-sm"
+              className="inline-flex items-center gap-2 text-text-secondary hover:text-accent-primary transition-colors text-sm font-semibold"
             >
               ← Back to all articles
             </Link>
@@ -126,7 +126,7 @@ export default async function ArticleDetailPage({
           {/* Related Bikes */}
           {article.relatedBikes?.length > 0 && (
             <div>
-              <h3 className="text-white font-bold text-lg mb-4">
+              <h3 className="text-text-primary font-bold text-lg mb-4">
                 Related Bikes
               </h3>
               <div className="space-y-4">
@@ -141,26 +141,26 @@ export default async function ArticleDetailPage({
           )}
 
           {/* Quick Summary Card */}
-          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5">
-            <h3 className="text-white font-bold text-base mb-3">
+          <div className="card p-6">
+            <h3 className="text-text-primary font-bold text-base mb-3">
               Article Summary
             </h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <p className="text-text-secondary text-sm leading-relaxed">
               {article.excerpt}
             </p>
           </div>
 
           {/* Browse More */}
-          <div className="bg-gradient-to-br from-orange-500/10 to-transparent border border-orange-500/20 rounded-2xl p-5">
-            <h3 className="text-white font-bold text-base mb-2">
+          <div className="bg-gradient-to-br from-(--color-accent-primary-light) to-(--color-bg-secondary) border border-(--color-accent-primary-light) rounded-2xl p-6">
+            <h3 className="text-text-primary font-bold text-base mb-2">
               Looking for a bike?
             </h3>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className="text-text-secondary text-sm mb-4">
               Browse all bikes available in Nepal with full specs and prices.
             </p>
             <Link
               href="/bikes"
-              className="inline-block bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
+              className="btn btn-primary btn-md"
             >
               Browse Bikes →
             </Link>

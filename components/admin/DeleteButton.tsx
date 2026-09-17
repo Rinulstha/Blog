@@ -26,7 +26,7 @@ export default function DeleteButton({ id, type }: DeleteButtonProps) {
     <button
       onClick={handleDelete}
       disabled={loading}
-      className="bg-red-500/10 hover:bg-red-500/20 text-red-400 text-xs px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50"
+      className="bg-(--color-error-light) hover:bg-(--color-error-light)/80 text-(--color-error) text-xs px-3 py-1.5 rounded-lg transition-colors disabled:opacity-50"
     >
       {loading ? "..." : "Delete"}
     </button>

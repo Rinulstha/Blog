@@ -8,10 +8,10 @@ interface ArticleCardProps {
 export default function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Link href={`/articles/${article.slug}`}>
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/10 transition-all duration-300 group">
+      <div className="card group h-full overflow-hidden">
 
         {/* Cover Image */}
-        <div className="relative h-44 bg-gray-800 overflow-hidden">
+        <div className="relative h-48 bg-(--color-bg-tertiary) overflow-hidden">
           {article.coverImage ? (
             <img
               src={article.coverImage}
@@ -25,22 +25,22 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           )}
 
           {/* Category Badge */}
-          <span className="absolute top-3 left-3 bg-gray-700 text-orange-400 text-xs font-semibold px-2 py-1 rounded-full capitalize">
+          <span className="absolute top-3 left-3 badge badge-secondary capitalize">
             {article.category}
           </span>
         </div>
 
         {/* Article Info */}
-        <div className="p-4">
-          <h3 className="text-white font-bold text-base mb-2 group-hover:text-orange-400 transition-colors line-clamp-2">
+        <div className="flex min-h-48 flex-col p-5">
+          <h3 className="text-text-primary font-bold text-lg leading-snug mb-2 group-hover:text-accent-primary transition-colors line-clamp-2">
             {article.title}
           </h3>
-          <p className="text-gray-400 text-sm line-clamp-2 mb-3">
+          <p className="text-text-secondary text-sm line-clamp-2 mb-3">
             {article.excerpt}
           </p>
 
           {/* Date */}
-          <p className="text-gray-500 text-xs">
+          <p className="mt-auto border-t border-(--color-border-light) pt-4 text-text-tertiary text-xs font-medium">
             {new Date(article.createdAt).toLocaleDateString("en-NP", {
               year: "numeric",
               month: "long",

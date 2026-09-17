@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gray-950 text-white min-h-screen">
+      <body className="bg-(--color-bg-primary) text-(--color-text-primary) min-h-screen antialiased">
         <SessionProvider>
           {children}
         </SessionProvider>
